@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker build -t myprojet .'
+            }
+        }
+        stage('Tests') {
+            steps {
+                sh 'docker run --rm myprojet'
+            }
+        }
+    }
+}
