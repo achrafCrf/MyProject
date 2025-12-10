@@ -19,8 +19,8 @@
         "cells": [
           {
             "position": {
-              "x": 580,
-              "y": -140
+              "x": 550,
+              "y": -290
             },
             "size": {
               "width": 130,
@@ -28,7 +28,7 @@
             },
             "attrs": {
               "text": {
-                "text": "BBB1 (Arkens SV)"
+                "text": "BBB1 – Arkens SV (Protection)"
               },
               "body": {
                 "stroke": "#333333",
@@ -124,8 +124,8 @@
             "id": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
             "data": {
               "type": "tm.Process",
-              "name": "BBB1 (Arkens SV)",
-              "description": "",
+              "name": "BBB1 – Arkens SV (Protection)",
+              "description": "Acquisition HC‑SR04 (analogique), seuil + TMS, LEDs (disjoncteur), MMS multicast, HTTP ArkStudio",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -133,14 +133,14 @@
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
-              "privilegeLevel": "",
+              "privilegeLevel": "High",
               "threats": []
             }
           },
           {
             "position": {
-              "x": 925,
-              "y": -140
+              "x": 895,
+              "y": -290
             },
             "size": {
               "width": 160,
@@ -259,8 +259,8 @@
           },
           {
             "position": {
-              "x": 330,
-              "y": -330
+              "x": 300,
+              "y": -480
             },
             "size": {
               "width": 120,
@@ -383,8 +383,8 @@
           },
           {
             "position": {
-              "x": 850,
-              "y": -330
+              "x": 820,
+              "y": -480
             },
             "size": {
               "width": 120,
@@ -507,8 +507,8 @@
           },
           {
             "position": {
-              "x": 90,
-              "y": -105
+              "x": 60,
+              "y": -255
             },
             "size": {
               "width": 100,
@@ -516,7 +516,7 @@
             },
             "attrs": {
               "text": {
-                "text": "PC1"
+                "text": "PC1 – Poste d’intervention"
               },
               "body": {
                 "stroke": "#333333",
@@ -612,8 +612,8 @@
             "id": "61c5bc91-96d0-4e43-b062-ccc9d8c89676",
             "data": {
               "type": "tm.Actor",
-              "name": "PC1",
-              "description": "",
+              "name": "PC1 – Poste d’intervention",
+              "description": "Opérateur local, configuration ArkStudio via HTTP/USB",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -624,8 +624,8 @@
           },
           {
             "position": {
-              "x": 1330,
-              "y": -105
+              "x": 1300,
+              "y": -255
             },
             "size": {
               "width": 112.5,
@@ -771,61 +771,6 @@
             "labels": [
               "Data Flow"
             ],
-            "id": "b0ebfebd-b34d-4fc1-b50e-5f52ed0c69c6",
-            "source": {
-              "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
-              "port": "d4933646-6319-41b3-9c4f-42a94fbd5822"
-            },
-            "target": {
-              "cell": "5a1f5841-b198-4fa9-a9e4-47af8a2ff87b",
-              "port": "97e2c28d-b06f-4436-8f9b-3667729fdd62"
-            },
-            "vertices": [
-              {
-                "x": 730,
-                "y": -210
-              },
-              {
-                "x": 810,
-                "y": -240
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
             "id": "a1aecb5c-419a-455b-887a-b6e05c7f4663",
             "source": {
               "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
@@ -855,17 +800,17 @@
             ],
             "id": "9405d11d-e1f1-492c-9e71-fac641f52a53",
             "source": {
-              "x": 1100,
-              "y": -180
+              "x": 1070,
+              "y": -330
             },
             "target": {
-              "x": 1350,
-              "y": 40
+              "x": 1320,
+              "y": -110
             },
             "vertices": [
               {
-                "x": 1150,
-                "y": -80
+                "x": 1120,
+                "y": -230
               }
             ]
           },
@@ -962,6 +907,78 @@
             "vertices": []
           },
           {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "9084c94a-dcae-44f1-a46e-4302b871d723",
+            "source": {
+              "x": 160,
+              "y": -350
+            },
+            "target": {
+              "x": 460,
+              "y": -40
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "dba106dc-9b4b-4b3f-9f27-92fb273231d8",
+            "source": {
+              "cell": "5a1f5841-b198-4fa9-a9e4-47af8a2ff87b",
+              "port": "97e2c28d-b06f-4436-8f9b-3667729fdd62"
+            },
+            "target": {
+              "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
+              "port": "d4933646-6319-41b3-9c4f-42a94fbd5822"
+            },
+            "vertices": []
+          },
+          {
             "shape": "flow",
             "attrs": {
               "line": {
@@ -1006,32 +1023,6 @@
               "port": "dd1a198e-5ef7-4ee1-a5f9-baea1e03744d"
             },
             "vertices": []
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Trust Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "labels": [
-              "Trust Boundary"
-            ],
-            "id": "9084c94a-dcae-44f1-a46e-4302b871d723",
-            "source": {
-              "x": 190,
-              "y": -200
-            },
-            "target": {
-              "x": 490,
-              "y": 110
-            }
           }
         ]
       }
