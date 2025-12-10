@@ -4,7 +4,7 @@
   "summary": {
     "title": "Mini ARKENS SV Architecture",
     "owner": "achraf",
-    "description": "Prototype BBB1/BBB2 avec MMS-like (UDP) et HTTP (ArkStudio) pour configuration",
+    "description": "Prototype BBB1/BBB2 avec MMS-like (UDP) et HTTP (ArkStudio)",
     "id": 0
   },
   "detail": {
@@ -41,26 +41,18 @@
                 {
                   "status": "Open",
                   "severity": "High",
-                  "mitigation": "Passer en HTTPS (cert local) ou limiter à interface USB; token + filtrage IP",
-                  "description": "La config ArkStudio transite en clair si HTTP sur 192.168.7.x",
+                  "mitigation": "HTTPS (cert local) ou interface USB; token + filtrage IP",
+                  "description": "Config ArkStudio en clair si HTTP sur 192.168.7.x",
                   "title": "Eavesdropping configuration HTTP",
                   "type": "Information disclosure"
                 },
                 {
                   "status": "Open",
                   "severity": "Medium",
-                  "mitigation": "HMAC/signature dans payload; TTL=1; segmentation + monitoring",
-                  "description": "Paquets UDP multicast non authentifiés; injection possible sur 192.168.0.x",
-                  "title": "Spoofing/Injection sur MMS multicast",
+                  "mitigation": "HMAC signature; TTL=1; segmentation + monitoring",
+                  "description": "MMS-like UDP multicast non authentifié; injection possible sur 192.168.0.x",
+                  "title": "Spoofing/Injection MMS mcast",
                   "type": "Tampering"
-                },
-                {
-                  "status": "Open",
-                  "severity": "Medium",
-                  "mitigation": "Thread RT en SCHED_FIFO + mlockall; watchdog état sûr",
-                  "description": "Charge HTTP/CPU peut retarder la tâche temps réel",
-                  "title": "Déni de service boucle RT",
-                  "type": "Denial of service"
                 }
               ]
             },
@@ -88,7 +80,7 @@
                   "severity": "Low",
                   "mitigation": "Filtrage IP, firewall, VLAN/segmentation; option VPN/chiffrement payload",
                   "description": "Forward UDP non chifré vers PC2; écoute locale possible",
-                  "title": "Exfiltration/écoute sur segment SCADA",
+                  "title": "Exfiltration/écoute SCADA",
                   "type": "Information disclosure"
                 }
               ]
