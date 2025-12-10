@@ -113,3 +113,40 @@
               "z": 6,
               "attrs": {
                 "line": { "stroke": "#000000", "strokeWidth": 2 },
+                "text": { "text": "UDP mcast 239.0.0.1:5005 TTL=1" }
+              },
+              "threats": []
+            },
+            {
+              "id": "flow-udp",
+              "type": "tm.Flow",
+              "source": { "id": "bbb2" },
+              "target": { "id": "pc2" },
+              "z": 7,
+              "attrs": {
+                "line": { "stroke": "#000000", "strokeWidth": 2 },
+                "text": { "text": "UDP unicast → 192.168.8.1:5006" }
+              },
+              "threats": []
+            },
+            {
+              "id": "tb-mms",
+              "type": "tm.Boundary",
+              "size": { "width": 540, "height": 190 },
+              "position": { "x": 260, "y": 20 },
+              "angle": 0,
+              "z": 0,
+              "attrs": {
+                "label": { "text": "Zone 192.168.0.x (Protection MMS)" },
+                "body": { "stroke": "#888888", "strokeWidth": 1, "strokeDasharray": "5,5" }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 0
+  }
+}
