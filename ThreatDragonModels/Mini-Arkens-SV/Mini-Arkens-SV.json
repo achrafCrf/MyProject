@@ -17,101 +17,99 @@
         "placeholder": "Description du DFD",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.5.0",
-        "cells": [
-          {
-            "id": "pc1",
-            "type": "tm.Actor",
-            "size": { "width": 160, "height": 80 },
-            "position": { "x": 60, "y": 60 },
-            "attrs": { "text": { "text": "PC1 Config (192.168.7.1)" } },
-            "threats": []
-          },
-          {
-            "id": "bbb1",
-            "type": "tm.Process",
-            "size": { "width": 180, "height": 100 },
-            "position": { "x": 300, "y": 60 },
-            "attrs": { "text": { "text": "BBB1 Arkens SV\nHTTP:9090, UDP mcast" } },
-            "threats": [
-              {
-                "status": "Open",
-                "severity": "High",
-                "mitigation": "Basculer en HTTPS (cert local) ou limiter à interface USB; token + filtrage IP",
-                "description": "La config ArkStudio transite en clair si HTTP sur 192.168.7.x",
-                "title": "Eavesdropping configuration HTTP",
-                "type": "Information disclosure"
+        "diagramJson": {
+          "cells": [
+            {
+              "id": "pc1",
+              "type": "tm.Actor",
+              "size": { "width": 160, "height": 80 },
+              "position": { "x": 60, "y": 60 },
+              "angle": 0,
+              "z": 1,
+              "attrs": { "text": { "text": "PC1 Config (192.168.7.1)" } },
+              "threats": []
+            },
+            {
+              "id": "bbb1",
+              "type": "tm.Process",
+              "size": { "width": 200, "height": 110 },
+              "position": { "x": 300, "y": 60 },
+              "angle": 0,
+              "z": 2,
+              "attrs": { "text": { "text": "BBB1 Arkens SV\nHTTP:9090, UDP mcast" } },
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "mitigation": "Passer en HTTPS (cert local) ou limiter à interface USB; token + filtrage IP",
+                  "description": "La config ArkStudio transite en clair si HTTP sur 192.168.7.x",
+                  "title": "Eavesdropping configuration HTTP",
+                  "type": "Information disclosure"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "mitigation": "HMAC/signature dans payload; TTL=1; segmentation + monitoring",
+                  "description": "Paquets UDP multicast non authentifiés; injection possible sur 192.168.0.x",
+                  "title": "Spoofing/Injection sur MMS multicast",
+                  "type": "Tampering"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "mitigation": "Thread RT en SCHED_FIFO + mlockall; watchdog état sûr",
+                  "description": "Charge HTTP/CPU peut retarder la tâche temps réel",
+                  "title": "Déni de service boucle RT",
+                  "type": "Denial of service"
+                }
+              ]
+            },
+            {
+              "id": "bbb2",
+              "type": "tm.Process",
+              "size": { "width": 200, "height": 110 },
+              "position": { "x": 560, "y": 60 },
+              "angle": 0,
+              "z": 3,
+              "attrs": { "text": { "text": "BBB2 Arkens CP\nForward UDP → PC2" } },
+              "threats": []
+            },
+            {
+              "id": "pc2",
+              "type": "tm.Actor",
+              "size": { "width": 160, "height": 80 },
+              "position": { "x": 820, "y": 60 },
+              "angle": 0,
+              "z": 4,
+              "attrs": { "text": { "text": "PC2 SCADA (192.168.8.1:5006)" } },
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Low",
+                  "mitigation": "Filtrage IP, firewall, VLAN/segmentation; option VPN/chiffrement payload",
+                  "description": "Forward UDP non chifré vers PC2; écoute locale possible",
+                  "title": "Exfiltration/écoute sur segment SCADA",
+                  "type": "Information disclosure"
+                }
+              ]
+            },
+            {
+              "id": "flow-http",
+              "type": "tm.Flow",
+              "source": { "id": "pc1" },
+              "target": { "id": "bbb1" },
+              "z": 5,
+              "attrs": {
+                "line": { "stroke": "#000000", "strokeWidth": 2 },
+                "text": { "text": "HTTP Config (9090)" }
               },
-              {
-                "status": "Open",
-                "severity": "Medium",
-                "mitigation": "HMAC/signature dans payload; TTL=1; segmentation + monitoring",
-                "description": "Paquets UDP multicast non authentifiés; injection possible sur 192.168.0.x",
-                "title": "Spoofing/Injection sur MMS multicast",
-                "type": "Tampering"
-              }
-            ]
-          },
-          {
-            "id": "bbb2",
-            "type": "tm.Process",
-            "size": { "width": 180, "height": 100 },
-            "position": { "x": 560, "y": 60 },
-            "attrs": { "text": { "text": "BBB2 Arkens CP\nForward UDP→PC2" } },
-            "threats": []
-          },
-          {
-            "id": "pc2",
-            "type": "tm.Actor",
-            "size": { "width": 160, "height": 80 },
-            "position": { "x": 820, "y": 60 },
-            "attrs": { "text": { "text": "PC2 SCADA (192.168.8.1:5006)" } },
-            "threats": [
-              {
-                "status": "Open",
-                "severity": "Low",
-                "mitigation": "Filtrage IP, firewall, VLAN/segmentation; option VPN/chiffrement payload",
-                "description": "Forward UDP non chifré vers PC2; écoute locale possible",
-                "title": "Exfiltration/écoute sur segment SCADA",
-                "type": "Information disclosure"
-              }
-            ]
-          },
-          {
-            "id": "flow-http",
-            "type": "tm.Flow",
-            "source": { "id": "pc1" },
-            "target": { "id": "bbb1" },
-            "attrs": { "line": { "stroke": "#000000", "strokeWidth": 2 }, "text": { "text": "HTTP Config (9090)" } },
-            "threats": []
-          },
-          {
-            "id": "flow-mms",
-            "type": "tm.Flow",
-            "source": { "id": "bbb1" },
-            "target": { "id": "bbb2" },
-            "attrs": { "line": { "stroke": "#000000", "strokeWidth": 2 }, "text": { "text": "UDP mcast 239.0.0.1:5005 TTL=1" } },
-            "threats": []
-          },
-          {
-            "id": "flow-udp",
-            "type": "tm.Flow",
-            "source": { "id": "bbb2" },
-            "target": { "id": "pc2" },
-            "attrs": { "line": { "stroke": "#000000", "strokeWidth": 2 }, "text": { "text": "UDP unicast → 192.168.8.1:5006" } },
-            "threats": []
-          },
-          {
-            "id": "tb2",
-            "type": "tm.Boundary",
-            "size": { "width": 500, "height": 180 },
-            "position": { "x": 260, "y": 20 },
-            "attrs": { "label": { "text": "Zone 192.168.0.x (Protection MMS)" } }
-          }
-        ]
-      }
-    ],
-    "diagramTop": 1,
-    "reviewer": "",
-    "threatTop": 0
-  }
-}
+              "threats": []
+            },
+            {
+              "id": "flow-mms",
+              "type": "tm.Flow",
+              "source": { "id": "bbb1" },
+              "target": { "id": "bbb2" },
+              "z": 6,
+              "attrs": {
+                "line": { "stroke": "#000000", "strokeWidth": 2 },
