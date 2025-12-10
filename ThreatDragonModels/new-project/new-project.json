@@ -737,6 +737,118 @@
             }
           },
           {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Zone SCADA 192.168.8.x (Unicast)",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Zone SCADA 192.168.8.x (Unicast)"
+            ],
+            "id": "9405d11d-e1f1-492c-9e71-fac641f52a53",
+            "source": {
+              "x": 1070,
+              "y": -330
+            },
+            "target": {
+              "x": 1320,
+              "y": -110
+            },
+            "vertices": [
+              {
+                "x": 1120,
+                "y": -230
+              },
+              {
+                "x": 1160,
+                "y": -200
+              },
+              {
+                "x": 1240,
+                "y": -160
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Zone Config 192.168.7.x (USB/HTTP)",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Zone Config 192.168.7.x (USB/HTTP)"
+            ],
+            "id": "9084c94a-dcae-44f1-a46e-4302b871d723",
+            "source": {
+              "x": 160,
+              "y": -350
+            },
+            "target": {
+              "x": 460,
+              "y": -40
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "HTTP Config",
+              "description": "ArkStudio: GET/POST /config, /apply, /logs",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "HTTP ",
+              "threats": []
+            },
+            "labels": [
+              "HTTP Config"
+            ],
+            "id": "3abbead6-b054-4c1c-b636-ce6fa8a871ed",
+            "source": {
+              "cell": "61c5bc91-96d0-4e43-b062-ccc9d8c89676",
+              "port": "0f7ee3d9-0249-44e5-9ecd-9407730c0945"
+            },
+            "target": {
+              "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
+              "port": "dd1a198e-5ef7-4ee1-a5f9-baea1e03744d"
+            },
+            "vertices": []
+          },
+          {
             "shape": "flow",
             "attrs": {
               "line": {
@@ -756,8 +868,8 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
+              "name": "Acquisition analogique (HC‑SR04)",
+              "description": "Pulse width → RMS, calibration linéaire",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -765,52 +877,29 @@
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "GPIO/Timing",
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "Acquisition analogique (HC‑SR04)"
             ],
-            "id": "a1aecb5c-419a-455b-887a-b6e05c7f4663",
+            "id": "dba106dc-9b4b-4b3f-9f27-92fb273231d8",
             "source": {
+              "cell": "5a1f5841-b198-4fa9-a9e4-47af8a2ff87b",
+              "port": "97e2c28d-b06f-4436-8f9b-3667729fdd62"
+            },
+            "target": {
               "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
               "port": "d4933646-6319-41b3-9c4f-42a94fbd5822"
             },
-            "target": {
-              "cell": "77212001-72fd-4eb0-a596-892e961d5c67",
-              "port": "97e2c28d-b06f-4436-8f9b-3667729fdd62"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Trust Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "labels": [
-              "Trust Boundary"
-            ],
-            "id": "9405d11d-e1f1-492c-9e71-fac641f52a53",
-            "source": {
-              "x": 1070,
-              "y": -330
-            },
-            "target": {
-              "x": 1320,
-              "y": -110
-            },
             "vertices": [
               {
-                "x": 1120,
-                "y": -230
+                "x": 840,
+                "y": -390
+              },
+              {
+                "x": 710,
+                "y": -320
               }
             ]
           },
@@ -834,7 +923,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
+              "name": "Commande TOR (LED rouge/verte)",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -843,20 +932,20 @@
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "GPIO",
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "Commande TOR (LED rouge/verte)"
             ],
-            "id": "f6099a04-cb96-48ed-9560-0fc469d9d616",
+            "id": "a1aecb5c-419a-455b-887a-b6e05c7f4663",
             "source": {
-              "cell": "409bb150-871f-42a5-ae0f-9bee254fab52",
-              "port": "7ae8ecdf-6480-4280-8348-0858bb35d947"
+              "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
+              "port": "d4933646-6319-41b3-9c4f-42a94fbd5822"
             },
             "target": {
-              "cell": "ae3918b6-28f3-4744-a14d-0a32c727e137",
-              "port": "2d08128f-2500-4e78-a2e7-9c87a543957d"
+              "cell": "77212001-72fd-4eb0-a596-892e961d5c67",
+              "port": "97e2c28d-b06f-4436-8f9b-3667729fdd62"
             },
             "vertices": []
           },
@@ -880,8 +969,8 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
+              "name": "UDP multicast",
+              "description": "239.0.0.1:5005, TTL=1, interface 192.168.0.101",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -889,11 +978,11 @@
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "UDP",
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "UDP multicast"
             ],
             "id": "f683a47d-d098-4c7c-b6ee-d97034be2f79",
             "source": {
@@ -907,6 +996,52 @@
             "vertices": []
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "UDP forward SCADA",
+              "description": "192.168.8.2 → 192.168.8.1:5006",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "UDP",
+              "threats": []
+            },
+            "labels": [
+              "UDP forward SCADA"
+            ],
+            "id": "f6099a04-cb96-48ed-9560-0fc469d9d616",
+            "source": {
+              "cell": "409bb150-871f-42a5-ae0f-9bee254fab52",
+              "port": "7ae8ecdf-6480-4280-8348-0858bb35d947"
+            },
+            "target": {
+              "cell": "ae3918b6-28f3-4744-a14d-0a32c727e137",
+              "port": "2d08128f-2500-4e78-a2e7-9c87a543957d"
+            },
+            "vertices": []
+          },
+          {
             "shape": "trust-boundary-curve",
             "width": 200,
             "height": 100,
@@ -914,115 +1049,23 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Trust Boundary",
+              "name": "Zone MMS 192.168.0.x (Multicast)",
               "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false
             },
             "labels": [
-              "Trust Boundary"
+              "Zone MMS 192.168.0.x (Multicast)"
             ],
-            "id": "9084c94a-dcae-44f1-a46e-4302b871d723",
+            "id": "3ca339f2-d1f6-499a-a524-2f8c2750a3a1",
             "source": {
-              "x": 160,
-              "y": -350
+              "x": 713,
+              "y": -290
             },
             "target": {
-              "x": 460,
-              "y": -40
+              "x": 870,
+              "y": -90
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "dba106dc-9b4b-4b3f-9f27-92fb273231d8",
-            "source": {
-              "cell": "5a1f5841-b198-4fa9-a9e4-47af8a2ff87b",
-              "port": "97e2c28d-b06f-4436-8f9b-3667729fdd62"
-            },
-            "target": {
-              "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
-              "port": "d4933646-6319-41b3-9c4f-42a94fbd5822"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "3abbead6-b054-4c1c-b636-ce6fa8a871ed",
-            "source": {
-              "cell": "61c5bc91-96d0-4e43-b062-ccc9d8c89676",
-              "port": "0f7ee3d9-0249-44e5-9ecd-9407730c0945"
-            },
-            "target": {
-              "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
-              "port": "dd1a198e-5ef7-4ee1-a5f9-baea1e03744d"
-            },
-            "vertices": []
           }
         ]
       }
