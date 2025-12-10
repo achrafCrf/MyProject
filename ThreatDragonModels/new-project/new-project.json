@@ -19,16 +19,16 @@
         "cells": [
           {
             "position": {
-              "x": 550,
+              "x": 520,
               "y": -290
             },
             "size": {
-              "width": 130,
+              "width": 160,
               "height": 130
             },
             "attrs": {
               "text": {
-                "text": "BBB1 – Arkens SV (Protection)"
+                "text": "BBB1 – Arkens SV \n(Protection)"
               },
               "body": {
                 "stroke": "#333333",
@@ -124,7 +124,7 @@
             "id": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
             "data": {
               "type": "tm.Process",
-              "name": "BBB1 – Arkens SV (Protection)",
+              "name": "BBB1 – Arkens SV \n(Protection)",
               "description": "Acquisition HC‑SR04 (analogique), seuil + TMS, LEDs (disjoncteur), MMS multicast, HTTP ArkStudio",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -507,11 +507,11 @@
           },
           {
             "position": {
-              "x": 60,
-              "y": -255
+              "x": -20.000000000000057,
+              "y": -260
             },
             "size": {
-              "width": 100,
+              "width": 180,
               "height": 60
             },
             "attrs": {
@@ -628,7 +628,7 @@
               "y": -255
             },
             "size": {
-              "width": 112.5,
+              "width": 190,
               "height": 60
             },
             "attrs": {
@@ -738,13 +738,9 @@
               "providesAuthentication": false,
               "threats": []
             },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
-            }
+            "children": [
+              "e65bd897-2ba8-4fda-a851-fbb89d21a16a"
+            ]
           },
           {
             "shape": "trust-boundary-curve",
@@ -777,40 +773,14 @@
                 "y": -230
               },
               {
-                "x": 1160,
-                "y": -200
+                "x": 1170,
+                "y": -190
               },
               {
                 "x": 1240,
                 "y": -160
               }
             ]
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Zone Config 192.168.7.x (USB/HTTP)",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "labels": [
-              "Zone Config 192.168.7.x (USB/HTTP)"
-            ],
-            "id": "9084c94a-dcae-44f1-a46e-4302b871d723",
-            "source": {
-              "x": 160,
-              "y": -350
-            },
-            "target": {
-              "x": 460,
-              "y": -40
-            }
           },
           {
             "shape": "flow",
@@ -1076,6 +1046,38 @@
               "port": "dd1a198e-5ef7-4ee1-a5f9-baea1e03744d"
             },
             "vertices": []
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Zone Config 192.168.7.x (USB/HTTP)",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Zone Config 192.168.7.x (USB/HTTP)"
+            ],
+            "id": "9084c94a-dcae-44f1-a46e-4302b871d723",
+            "source": {
+              "x": 220,
+              "y": -360
+            },
+            "target": {
+              "x": 460,
+              "y": -40
+            },
+            "vertices": [
+              {
+                "x": 270,
+                "y": -170
+              }
+            ]
           }
         ]
       }
