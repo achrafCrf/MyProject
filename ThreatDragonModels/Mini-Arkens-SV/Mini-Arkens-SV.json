@@ -1,32 +1,25 @@
 
 {
   "version": "2.5.0",
-  "summary": {
-    "title": "Mini ARKENS SV Architecture",
-    "owner": "achraf",
-    "description": "Prototype BBB1/BBB2 avec MMS-like (UDP) et HTTP (ArkStudio)",
-    "id": 0
-  },
+  "summary": { "title": "Test Diagram Visible", "owner": "achraf", "description": "Mini test", "id": 0 },
   "detail": {
     "contributors": [],
     "diagrams": [
       {
         "id": 0,
-        "title": "Architecture Mini ARKENS SV",
-        "diagramType": "DFD",
-        "placeholder": "Description du DFD",
+        "title": "Mini Visible",
+        "diagramType": "STRIDE",
+        "placeholder": "Description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.5.0",
         "diagramJson": {
           "cells": [
-            { "id": "pc1", "type": "tm.Actor", "size": { "width": 160, "height": 80 }, "position": { "x": 60, "y": 60 }, "angle": 0, "z": 1, "attrs": { "text": { "text": "PC1 Config (192.168.7.1)" } }, "threats": [] },
-            { "id": "bbb1", "type": "tm.Process", "size": { "width": 200, "height": 110 }, "position": { "x": 300, "y": 60 }, "angle": 0, "z": 2, "attrs": { "text": { "text": "BBB1 Arkens SV\nHTTP:9090, UDP mcast" } }, "threats": [] },
-            { "id": "bbb2", "type": "tm.Process", "size": { "width": 200, "height": 110 }, "position": { "x": 560, "y": 60 }, "angle": 0, "z": 3, "attrs": { "text": { "text": "BBB2 Arkens CP\nForward UDP → PC2" } }, "threats": [] },
-            { "id": "pc2", "type": "tm.Actor", "size": { "width": 160, "height": 80 }, "position": { "x": 820, "y": 60 }, "angle": 0, "z": 4, "attrs": { "text": { "text": "PC2 SCADA (192.168.8.1:5006)" } }, "threats": [] },
-            { "id": "flow-http", "type": "tm.Flow", "source": { "id": "pc1" }, "target": { "id": "bbb1" }, "z": 5, "attrs": { "line": { "stroke": "#000", "strokeWidth": 2 }, "text": { "text": "HTTP Config (9090)" } }, "threats": [] },
-            { "id": "flow-mms", "type": "tm.Flow", "source": { "id": "bbb1" }, "target": { "id": "bbb2" }, "z": 6, "attrs": { "line": { "stroke": "#000", "strokeWidth": 2 }, "text": { "text": "UDP mcast 239.0.0.1:5005 TTL=1" } }, "threats": [] },
-            { "id": "flow-udp", "type": "tm.Flow", "source": { "id": "bbb2" }, "target": { "id": "pc2" }, "z": 7, "attrs": { "line": { "stroke": "#000", "strokeWidth": 2 }, "text": { "text": "UDP unicast → 192.168.8.1:5006" } }, "threats": [] },
-            { "id": "tb-mms", "type": "tm.Boundary", "size": { "width": 540, "height": 190 }, "position": { "x": 260, "y": 20 }, "angle": 0, "z": 0, "attrs": { "label": { "text": "Zone 192.168.0.x (Protection MMS)" }, "body": { "stroke": "#888", "strokeWidth": 1, "strokeDasharray": "5,5" } } }
+            { "id": "actor1", "type": "tm.Actor",   "size": { "width": 160, "height": 80 }, "position": { "x": 80, "y": 80 },  "angle": 0, "z": 1, "attrs": { "text": { "text": "Actor A" } }, "threats": [] },
+            { "id": "proc1",  "type": "tm.Process", "size": { "width": 200, "height": 110 }, "position": { "x": 360, "y": 80 }, "angle": 0, "z": 2, "attrs": { "text": { "text": "Process B" } }, "threats": [] },
+            { "id": "flow1",  "type": "tm.Flow",    "source": { "id": "actor1" }, "target": { "id": "proc1" }, "z": 3,
+              "attrs": { "line": { "stroke": "#000", "strokeWidth": 2 }, "text": { "text": "HTTP" } }, "threats": [] },
+            { "id": "boundary1", "type": "tm.Boundary", "size": { "width": 520, "height": 200 }, "position": { "x": 40, "y": 40 }, "angle": 0, "z": 0,
+              "attrs": { "label": { "text": "Trust Zone" }, "body": { "stroke": "#888", "strokeWidth": 1, "strokeDasharray": "5,5" } } }
           ]
         }
       }
