@@ -1,31 +1,106 @@
 
 {
-  "version": "2.5.0",
-  "summary": { "title": "Test Diagram Visible", "owner": "achraf", "description": "Mini test", "id": 0 },
-  "detail": {
-    "contributors": [],
-    "diagrams": [
-      {
-        "id": 0,
-        "title": "Mini Visible",
-        "diagramType": "STRIDE",
-        "placeholder": "Description",
-        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.5.0",
-        "diagramJson": {
-          "cells": [
-            { "id": "actor1", "type": "tm.Actor",   "size": { "width": 160, "height": 80 }, "position": { "x": 80, "y": 80 },  "angle": 0, "z": 1, "attrs": { "text": { "text": "Actor A" } }, "threats": [] },
-            { "id": "proc1",  "type": "tm.Process", "size": { "width": 200, "height": 110 }, "position": { "x": 360, "y": 80 }, "angle": 0, "z": 2, "attrs": { "text": { "text": "Process B" } }, "threats": [] },
-            { "id": "flow1",  "type": "tm.Flow",    "source": { "id": "actor1" }, "target": { "id": "proc1" }, "z": 3,
-              "attrs": { "line": { "stroke": "#000", "strokeWidth": 2 }, "text": { "text": "HTTP" } }, "threats": [] },
-            { "id": "boundary1", "type": "tm.Boundary", "size": { "width": 520, "height": 200 }, "position": { "x": 40, "y": 40 }, "angle": 0, "z": 0,
-              "attrs": { "label": { "text": "Trust Zone" }, "body": { "stroke": "#888", "strokeWidth": 1, "strokeDasharray": "5,5" } } }
-          ]
+  "version": "2.0",
+  "summary": "Mini ARKENS SV Architecture",
+  "detail": "Prototype BBB1/BBB2 avec MMS-like (UDP) et HTTP pour configuration",
+  "diagrams": [
+    {
+      "id": "dfd-arkens",
+      "title": "Architecture Mini ARKENS SV",
+      "diagramType": "DFD",
+      "trustBoundaries": [
+        {
+          "id": "tb1",
+          "name": "Zone Config (192.168.7.x)",
+          "elements": ["pc1", "bbb1"]
+        },
+        {
+          "id": "tb2",
+          "name": "Zone MMS (192.168.0.x)",
+          "elements": ["bbb1", "bbb2"]
+        },
+        {
+          "id": "tb3",
+          "name": "Zone SCADA (192.168.8.x)",
+          "elements": ["bbb2", "pc2"]
         }
-      }
-    ],
-    "diagramTop": 1,
-    "reviewer": "",
-    "threatTop": 0
-  }
+      ],
+      "nodes": [
+        { "id": "pc1", "name": "PC1 Config", "type": "ExternalEntity" },
+        { "id": "bbb1", "name": "BBB1 Arkens SV", "type": "Process" },
+        { "id": "bbb2", "name": "BBB2 Arkens CP", "type": "Process" },
+        { "id": "pc2", "name": "PC2 SCADA", "type": "ExternalEntity" },
+        { "id": "sensor", "name": "HC-SR04 Capteurs", "type": "DataStore" },
+        { "id": "leds", "name": "LEDs Disjoncteur", "type": "DataStore" }
+      ],
+      "flows": [
+        {
+          "id": "f1",
+          "source": "pc1",
+          "target": "bbb1",
+          "name": "HTTP Config",
+          "protocol": "HTTP",
+          "description": "ArkStudio: GET/POST /config"
+        },
+        {
+          "id": "f2",
+          "source": "bbb1",
+          "target": "bbb2",
+          "name": "MMS Multicast",
+          "protocol": "UDP",
+          "description": "239.0.0.1:5005 TTL=1"
+        },
+        {
+          "id": "f3",
+          "source": "bbb2",
+          "target": "pc2",
+          "name": "UDP Forward",
+          "protocol": "UDP",
+          "description": "192.168.8.2 → 192.168.8.1:5006"
+        },
+        {
+          "id": "f4",
+          "source": "sensor",
+          "target": "bbb1",
+          "name": "Acquisition analogique"
+        },
+        {
+          "id": "f5",
+          "source": "bbb1",
+          "target": "leds",
+          "name": "Commande logique"
+        }
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "T1",
+      "title": "Interception HTTP",
+      "category": "Information Disclosure",
+      "severity": "High",
+      "mitigation": "Utiliser HTTPS ou SSH"
+    },
+    {
+      "id": "T2",
+      "title": "Injection MMS multicast",
+      "category": "Spoofing/Tampering",
+      "severity": "Medium",
+      "mitigation": "Authentification HMAC, TTL=1"
+    },
+    {
+      "id": "T3",
+      "title": "Sniffing UDP SCADA",
+      "category": "Information Disclosure",
+      "severity": "Low",
+      "mitigation": "Filtrage IP, VLAN, chiffrement"
+    },
+    {
+      "id": "T4",
+      "title": "DoS sur boucle RT",
+      "category": "Denial of Service",
+      "severity": "Medium",
+      "mitigation": "Watchdog, SCHED_FIFO"
+    }
+  ]
 }
