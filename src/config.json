@@ -1,0 +1,9 @@
+{
+  "threshold_A": 550.0,
+  "tms_A_ms": 2000,
+  "threshold_V": 230.0,
+  "tms_V_ms": 2000,
+  "samples": 10,
+  "sleep_between_samples_ms": 10,
+  "trip_logic": "any"
+}
