@@ -31,8 +31,8 @@
                 "text": "BBB1 – Arkens SV \n(Protection)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -129,12 +129,47 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "High",
-              "threats": []
+              "threats": [
+                {
+                  "id": "bcd7728a-bcd6-4adc-8e33-5def53cdd8d6",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "retard de la boucle RT",
+                  "mitigation": "SCHED_FIFO, mlockall, watchdog → etat de sûreté (LED rouge + log).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                },
+                {
+                  "id": "5b53d7d4-4af7-46f0-a1c8-2560d4ce236f",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "service HTTP accessible depuis réseau",
+                  "mitigation": "bind USB‑only, token, pas d’exécution de commandes arbitraires.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -786,7 +821,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -807,12 +843,44 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "HTTP ",
-              "threats": []
+              "threats": [
+                {
+                  "id": "113f439a-24b4-4d30-b7f0-87604ec9bec2",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "HTTP en clair",
+                  "mitigation": "HTTPS ou SSH, segment isolé",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "442d57a6-bf5d-40a5-8f50-4ddda5dba2ee",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "PC non autorisé configure BBB1",
+                  "mitigation": "token partagé, whitelist IP, bind sur USB‑only",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "HTTP Config"
@@ -826,7 +894,12 @@
               "cell": "cb0d5008-4664-4ce2-b88c-6cafcd47f710",
               "port": "dd1a198e-5ef7-4ee1-a5f9-baea1e03744d"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": 300,
+                "y": -230
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -933,7 +1006,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -954,12 +1028,31 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "UDP",
-              "threats": []
+              "threats": [
+                {
+                  "id": "9f46b95d-a914-4cba-8f09-eeb696310b11",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Sniffing UDP",
+                  "mitigation": "filtrage IP, firewall Windows, VLAN/segmentation, chiffrement/VPN si nécessaire.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "UDP forward SCADA"
@@ -1005,7 +1098,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1026,12 +1120,31 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": true,
               "protocol": "UDP",
-              "threats": []
+              "threats": [
+                {
+                  "id": "1b99f749-91db-45bc-8211-f3f717c03735",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Injection UDP sur 239.0.0.1",
+                  "mitigation": "HMAC/signature payload, TTL=1, réseau isolé, monitoring.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "UDP multicast"
@@ -1084,6 +1197,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 6
   }
 }
